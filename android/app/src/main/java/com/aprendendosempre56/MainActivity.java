@@ -1,4 +1,4 @@
-package com.aprendendosempre;
+package com.aprendendosempre56;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "AprendendoSempre";
+        return "AprendendoSempre56";
     }
 }

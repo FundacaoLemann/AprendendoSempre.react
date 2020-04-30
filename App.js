@@ -1,5 +1,20 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
+
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  NativeModules,
+  DeviceEventEmitter,
+} from "react-native";
 
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
@@ -8,7 +23,21 @@ const instructions = Platform.select({
     "Shake or press menu button for dev menu",
 });
 
+const onSdStateChange = (event) => {
+  console.log("state: " + event.sd_state);
+  console.log("reason: " + event.sd_reason);
+  console.log("carrier: " + event.carrier_name);
+  console.log("client ip: " + event.client_ip);
+};
+
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    DeviceEventEmitter.addListener("onSdStateChange", onSdStateChange);
+    NativeModules.SmiSdkReactModule.registerSdStateChangeListner();
+  }
+
   render() {
     return (
       <View style={styles.container}>

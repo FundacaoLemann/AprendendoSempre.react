@@ -1,4 +1,4 @@
-package com.aprendendosempre;
+package com.aprendendosempre56;
 
 import com.datami.smi.SdStateChangeListener; 
 import com.datami.smi.SmiResult; 
@@ -6,11 +6,12 @@ import com.datami.smi.SmiSdk;
 import com.datami.smisdk_plugin.SmiSdkReactModule; 
 import com.datami.smisdk_plugin.SmiSdkReactPackage; 
 import android.app.Application;
-import com.facebook.react.BuildConfig;
+
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
+import com.facebook.soloader.SoLoader;
 
 import java.util.Arrays;
 import java.util.List;
@@ -41,17 +42,17 @@ public class MainApplication extends Application implements SdStateChangeListene
     return mReactNativeHost;
   }
 
- @Override 
-  public void onCreate() { 
-   super.onCreate();
-   SmiSdk.initSponsoredData(getResources().getString(R.string.smisdk_apikey), 
-   this, null,R.mipmap.ic_launcher,
-   getResources().getBoolean(R.bool.smisdk_show_messaging),
-   Arrays.asList(getResources().getStringArray(R.array.smisdk_exclusion_domin)));
- }
-
+  @Override
+  public void onCreate() {
+    super.onCreate();
+SmiSdk.initSponsoredData(getResources().getString(R.string.smisdk_apikey), 
+this, null, R.mipmap.ic_launcher,
+getResources().getBoolean(R.bool.smisdk_show_messaging),
+Arrays.asList(getResources().getStringArray(R.array.smisdk_exclusion_domin)));
+    SoLoader.init(this, /* native exopackage */ false);
+  }
 @Override 
  public void onChange(SmiResult smiResult) {
-   SmiSdkReactModule.setSmiResultToModule(smiResult);
- }
+ SmiSdkReactModule.setSmiResultToModule(smiResult);
+}
 }
