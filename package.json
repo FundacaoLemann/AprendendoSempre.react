@@ -9,7 +9,8 @@
   "dependencies": {
     "react": "16.4.1",
     "react-native": "0.56.0",
-    "react-native-smisdk-plugin": "git+https://bitbucket.org/datami/sd-react-native-smisdk-plugin.git"
+    "react-native-smisdk-plugin": "git+https://bitbucket.org/datami/sd-react-native-smisdk-plugin.git",
+    "react-navigation": "^2.11.1"
   },
   "devDependencies": {
     "babel-jest": "25.5.1",
