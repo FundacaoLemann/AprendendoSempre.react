@@ -1,34 +1,26 @@
-import React from "react";
-import { Text, View, Dimensions } from "react-native";
-import BottomSheet from "reanimated-bottom-sheet";
-import Icon from "react-native-vector-icons/FontAwesome";
+import * as React from "react";
+import { View, Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-export default class Example extends React.Component {
-  renderContent = () => (
-    <View style={{ borderWidth: 1, borderColor: "red" }}>
-      <Text>Olá</Text>
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text>Home Screen</Text>
     </View>
   );
-
-  renderHeader = () => (
-    <View style={{ borderWidth: 1, borderColor: "red" }}>
-      <Text>Olá</Text>
-    </View>
-  );
-
-  render() {
-    return (
-      <View style={{ flex: 1 }}>
-        <Text style={{ fontSize: 100, fontFamily: "Quicksand-Regular" }}>
-          Olá Diego Rodrigues Vieira
-        </Text>
-        <Icon name="rocket" size={30} color="#900" />
-        <BottomSheet
-          snapPoints={[450, 300, 100]}
-          renderContent={this.renderContent}
-          renderHeader={this.renderHeader}
-        />
-      </View>
-    );
-  }
 }
+
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default App;
