@@ -1,30 +1,29 @@
-import React, { useState } from "react";
-import { NativeModules, Text, DeviceEventEmitter, View } from "react-native";
+import React from "react";
+import { Text, View, Dimensions } from "react-native";
+import BottomSheet from "reanimated-bottom-sheet";
 
-export default function App() {
-  const [datami, setDatami] = useState({});
-
-  const onSdStateChange = (event) => setDatami(event);
-
-  React.useEffect(() => {
-    DeviceEventEmitter.addListener("onSdStateChange", onSdStateChange);
-    NativeModules.SmiSdkReactModule.registerSdStateChangeListner();
-
-    return () => {
-      DeviceEventEmitter.removeListener("onSdStateChange");
-    };
-  }, []);
-
-  React.useEffect(() => {
-    console.log("state: " + datami.sd_state);
-    console.log("reason: " + datami.sd_reason);
-    console.log("carrier: " + datami.carrier_name);
-    console.log("client ip: " + datami.client_ip);
-  }, [datami]);
-
-  return (
-    <View>
+export default class Example extends React.Component {
+  renderContent = () => (
+    <View style={{ borderWidth: 1, borderColor: "red" }}>
       <Text>Olá</Text>
     </View>
   );
+
+  renderHeader = () => (
+    <View style={{ borderWidth: 1, borderColor: "red" }}>
+      <Text>Olá</Text>
+    </View>
+  );
+
+  render() {
+    return (
+      <View style={{ flex: 1 }}>
+        <BottomSheet
+          snapPoints={[450, 300, 100]}
+          renderContent={this.renderContent}
+          renderHeader={this.renderHeader}
+        />
+      </View>
+    );
+  }
 }
