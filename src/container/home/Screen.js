@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import useHeaderHeight from "./hooks/useHeaderHeight";
 import TextInput from "../../components/TextInput";
 import Item from "./components/Item";
+import { WebView } from "react-native-webview";
 
 const { height } = Dimensions.get("window");
 

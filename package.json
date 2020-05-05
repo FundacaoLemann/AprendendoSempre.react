@@ -25,6 +25,7 @@
     "react-native-smisdk-plugin": "git+https://bitbucket.org/datami/sd-react-native-smisdk-plugin.git",
     "react-native-svg": "^12.1.0",
     "react-native-vector-icons": "^6.6.0",
+    "react-native-webview": "^9.4.0",
     "reanimated-bottom-sheet": "^1.0.0-alpha.20"
   },
   "devDependencies": {
