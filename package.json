@@ -10,6 +10,7 @@
   "dependencies": {
     "react": "16.8.3",
     "react-native": "0.59.10",
+    "react-native-gesture-handler": "^1.4.1",
     "react-native-smisdk-plugin": "git+https://bitbucket.org/datami/sd-react-native-smisdk-plugin.git"
   },
   "devDependencies": {
