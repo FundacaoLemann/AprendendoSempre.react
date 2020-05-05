@@ -1,16 +1,16 @@
-import React from "react";
-import { Dimensions, StyleSheet, View } from "react-native";
+import React, { useRef, useState } from "react";
+import { Dimensions, Modal, StyleSheet, View } from "react-native";
 import { useSafeArea } from "react-native-safe-area-context";
 import BottomSheet from "reanimated-bottom-sheet";
 import Container from "../../components/Container";
+import TextInput from "../../components/TextInput";
 import Typography from "../../components/Typography";
 import useBottomTabHeight from "../../navigation/hooks/useBottomTabHeight";
 import { useTheme } from "../../theme";
 import Header from "./components/Header";
-import useHeaderHeight from "./hooks/useHeaderHeight";
-import TextInput from "../../components/TextInput";
 import Item from "./components/Item";
-import { WebView } from "react-native-webview";
+import WebView from "./components/WebView";
+import useHeaderHeight from "./hooks/useHeaderHeight";
 
 const { height } = Dimensions.get("window");
 
@@ -86,6 +86,10 @@ const data = [
 ];
 
 function Home() {
+  const [canGoBack, setCanGoBack] = useState(false);
+  const [canGoForward, setCanGoForward] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedItem, setSelectedItem] = useState({});
   const insets = useSafeArea();
 
   const {
@@ -94,6 +98,8 @@ function Home() {
       common: { white },
     },
   } = useTheme();
+
+  const webView = useRef();
 
   const renderContent = () => (
     <View
@@ -106,7 +112,14 @@ function Home() {
       ]}
     >
       {data.map((item) => (
-        <Item key={item.id} {...item} />
+        <Item
+          onPress={() => {
+            setSelectedItem(item);
+            toggleModalVisible();
+          }}
+          key={item.id}
+          {...item}
+        />
       ))}
     </View>
   );
@@ -134,6 +147,33 @@ function Home() {
   const middlePoint =
     height - (useHeaderHeight() - spacing(2) + useBottomTabHeight());
 
+  const handleNavigationStateChange = (event) => {
+    setCanGoBack(event.canGoBack);
+    setCanGoForward(event.canGoForward);
+  };
+
+  const handleBack = () => {
+    if (canGoBack && webView && webView.current && webView.current.reload) {
+      webView.current.goBack();
+    }
+  };
+
+  const handleForward = () => {
+    if (canGoForward && webView && webView.current && webView.current.reload) {
+      webView.current.goForward();
+    }
+  };
+
+  const handleReload = () => {
+    if (webView && webView.current && webView.current.reload) {
+      webView.current.reload();
+    }
+  };
+
+  toggleModalVisible = () => {
+    setModalVisible(!modalVisible);
+  };
+
   return (
     <>
       <Header />
@@ -144,6 +184,29 @@ function Home() {
         renderContent={renderContent}
         enabledBottomClamp
       />
+      <Modal
+        animationType="slide"
+        onRequestClose={toggleModalVisible}
+        transparent={false}
+        visible={modalVisible}
+      >
+        <WebView
+          automaticallyAdjustContentInsets={false}
+          canGoBack={canGoBack}
+          canGoForward={canGoForward}
+          onClose={toggleModalVisible}
+          decelerationRate="normal"
+          domStorageEnabled
+          goBack={handleBack}
+          goForward={handleForward}
+          javaScriptEnabled
+          onNavigationStateChange={handleNavigationStateChange}
+          ref={webView}
+          reload={handleReload}
+          source={{ uri: selectedItem.url }}
+          startInLoadingState
+        />
+      </Modal>
     </>
   );
 }
