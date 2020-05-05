@@ -1,4 +1,4 @@
-package com.aprendendosempre;
+package org.aprendendosempre.app;
 
 import android.app.Application;
 
