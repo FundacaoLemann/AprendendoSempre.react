@@ -4,7 +4,6 @@ import {
   Modal,
   StyleSheet,
   View,
-  DeviceEventEmitter,
   NativeModules,
 } from "react-native";
 import { useSafeArea } from "react-native-safe-area-context";
@@ -67,7 +66,7 @@ const data = [
     id: 5,
     title: "Google Sala de Aula",
     image: require("../../assets/logo.png"),
-    url: "https://classroom.google.com/",
+    url: "https://edu.google.com/intl/pt/products/classroom/?modal_active=none",
   },
   {
     id: 6,
@@ -91,7 +90,7 @@ const data = [
     id: 9,
     title: "AvaMec",
     image: require("../../assets/logo.png"),
-    url: "https://www.aquitemanglo.com.br/",
+    url: "http://avamec.mec.gov.br/#/",
   },
 ];
 
@@ -102,10 +101,6 @@ function Home() {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedItem, setSelectedItem] = useState({});
   const insets = useSafeArea();
-
-  const [datami, setDatami] = useState({});
-
-  const onSdStateChange = (event) => setDatami(event);
 
   const {
     spacing,
@@ -151,8 +146,9 @@ function Home() {
       item.url,
       "",
       (result) => {
+        console.log("result ", result);
         if (result && result.url) {
-          setSelectedItem({ ...item, url: `${result.url}?query=1` });
+          setSelectedItem({ ...item, url: result.url });
           toggleModalVisible();
         }
       }
@@ -194,13 +190,18 @@ function Home() {
   };
 
   const handleBack = () => {
-    if (canGoBack && webView && webView.current && webView.current.reload) {
+    if (canGoBack && webView && webView.current && webView.current.goBack) {
       webView.current.goBack();
     }
   };
 
   const handleForward = () => {
-    if (canGoForward && webView && webView.current && webView.current.reload) {
+    if (
+      canGoForward &&
+      webView &&
+      webView.current &&
+      webView.current.goForward
+    ) {
       webView.current.goForward();
     }
   };
@@ -233,20 +234,31 @@ function Home() {
         visible={modalVisible}
       >
         <WebView
+          allowFileAccess
+          allowFileAccessFromFileURLs
+          allowingReadAccessToURL
+          allowsBackForwardNavigationGestures
+          allowsFullscreenVideo
+          allowsInlineMediaPlayback
+          allowsLinkPreview
+          allowUniversalAccessFromFileURLs
           automaticallyAdjustContentInsets={false}
           canGoBack={canGoBack}
           canGoForward={canGoForward}
-          onClose={toggleModalVisible}
-          decelerationRate="normal"
           domStorageEnabled
+          geolocationEnabled
           goBack={handleBack}
           goForward={handleForward}
           javaScriptEnabled
+          onClose={toggleModalVisible}
           onNavigationStateChange={handleNavigationStateChange}
+          originWhitelist={["*"]}
           ref={webView}
           reload={handleReload}
+          sharedCookiesEnabled
           source={{ uri: selectedItem.url }}
           startInLoadingState
+          thirdPartyCookiesEnabled
         />
       </Modal>
     </>

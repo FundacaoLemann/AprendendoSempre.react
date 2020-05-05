@@ -72,20 +72,6 @@ export default function BottomTabNavigator() {
         }}
       />
       <Tab.Screen
-        name="Live"
-        component={LiveStack}
-        options={{
-          title: "Live",
-        }}
-      />
-      <Tab.Screen
-        name="Classroom"
-        component={ClassRoom}
-        options={{
-          title: "Classroom",
-        }}
-      />
-      <Tab.Screen
         name="About"
         component={AboutStack}
         options={{
