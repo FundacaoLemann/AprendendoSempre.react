@@ -18,6 +18,9 @@ export default class Example extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
+        <Text style={{ fontSize: 100, fontFamily: "Quicksand-Regular" }}>
+          Olá Diego Rodrigues Vieira
+        </Text>
         <BottomSheet
           snapPoints={[450, 300, 100]}
           renderContent={this.renderContent}
