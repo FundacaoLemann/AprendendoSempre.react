@@ -1,8 +1,8 @@
-import React from 'react';
-import {Text} from 'react-native';
+import React from "react";
+import { Text } from "react-native";
 
 function About() {
-  return <Text>Sobre</Text>;
+  return null;
 }
 
 export default About;

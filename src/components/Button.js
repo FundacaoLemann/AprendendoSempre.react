@@ -1,30 +1,30 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import {useTheme} from '../theme';
-import Typography from './Typography';
+import PropTypes from "prop-types";
+import React from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { useTheme } from "../theme";
+import Typography from "./Typography";
 
 const styles = StyleSheet.create({
   root: {
-    display: 'flex',
-    flexDirection: 'row',
+    display: "flex",
+    flexDirection: "row",
   },
   button: {
-    alignItems: 'center',
+    alignItems: "center",
     borderWidth: 2,
-    display: 'flex',
+    display: "flex",
     height: 40,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 });
 
-function Button({onPress, style}) {
+function Button({ onPress, style }) {
   const {
     palette: {
-      common: {white},
+      common: { white },
     },
     spacing,
-    shape: {borderRadius},
+    shape: { borderRadius },
   } = useTheme();
 
   const buttonStyles = {

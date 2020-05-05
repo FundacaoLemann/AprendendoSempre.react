@@ -1,18 +1,25 @@
-import React from 'react';
-import {TextInput as TextInputAsNative, View} from 'react-native';
-import {useTheme} from '../theme';
-import Icon from './Icon';
+import React from "react";
+import { TextInput as TextInputAsNative, View, StyleSheet } from "react-native";
+import { useTheme } from "../theme";
+import Icon from "./Icon";
 
-function TextInput({icon, ...rest}) {
+const styles = StyleSheet.create({
+  relative: {
+    position: "relative",
+  },
+});
+
+function TextInput({ icon, ...rest }) {
   const {
-    palette: {primaryLight},
+    palette: { primaryLight },
     spacing,
     typography: {
       fonts: {
-        regular: {fontFamily},
+        regular: { fontFamily },
       },
     },
-    textInput: {height},
+    textInput: { height },
+    icon: { size },
   } = useTheme();
 
   const textInputStyles = {
@@ -20,21 +27,25 @@ function TextInput({icon, ...rest}) {
     borderRadius: height / 2,
     fontFamily,
     height,
-    paddingHorizontal: spacing(2),
+    paddingLeft: icon ? spacing(3) + size : spacing(2),
+    paddingRight: spacing(2),
   };
 
   return (
-    <View style={{position: 'relative'}}>
-      <View
-        style={{
-          width: 24,
-          height,
-          position: 'absolute',
-          justifyContent: 'center',
-          marginLeft: spacing(2),
-        }}>
-        <Icon name={icon} />
-      </View>
+    <View style={styles.relative}>
+      {icon && (
+        <View
+          style={{
+            width: 24,
+            height,
+            position: "absolute",
+            justifyContent: "center",
+            marginLeft: spacing(2),
+          }}
+        >
+          <Icon name={icon} />
+        </View>
+      )}
       <TextInputAsNative style={[textInputStyles]} {...rest} />
     </View>
   );

@@ -1,20 +1,21 @@
-import PropTypes from 'prop-types';
-import * as React from 'react';
-import Svg, {G, Path} from 'react-native-svg';
-import {useTheme} from '../theme';
+import PropTypes from "prop-types";
+import * as React from "react";
+import Svg, { G, Path } from "react-native-svg";
+import { useTheme } from "../theme";
 
-function Logo({style, ...rest}) {
+function Logo({ style, ...rest }) {
   const {
     palette: {
-      common: {white},
+      common: { white },
     },
   } = useTheme();
 
   return (
     <Svg
-      style={[{width: 189, height: 23.261}, style]}
+      style={[{ width: 189, height: 23.261 }, style]}
       viewBox="0 0 189 23.261"
-      {...rest}>
+      {...rest}
+    >
       <G>
         <G fill={white}>
           <Path

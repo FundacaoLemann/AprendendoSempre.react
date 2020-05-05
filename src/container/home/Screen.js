@@ -1,5 +1,12 @@
 import React, { useRef, useState } from "react";
-import { Dimensions, Modal, StyleSheet, View } from "react-native";
+import {
+  Dimensions,
+  Modal,
+  StyleSheet,
+  View,
+  DeviceEventEmitter,
+  NativeModules,
+} from "react-native";
 import { useSafeArea } from "react-native-safe-area-context";
 import BottomSheet from "reanimated-bottom-sheet";
 import Container from "../../components/Container";
@@ -7,6 +14,7 @@ import TextInput from "../../components/TextInput";
 import Typography from "../../components/Typography";
 import useBottomTabHeight from "../../navigation/hooks/useBottomTabHeight";
 import { useTheme } from "../../theme";
+import { removeAccents } from "../../utils";
 import Header from "./components/Header";
 import Item from "./components/Item";
 import WebView from "./components/WebView";
@@ -18,13 +26,15 @@ const styles = StyleSheet.create({
   header: {
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    height: 100 + 45,
+    height: 145,
     justifyContent: "space-between",
   },
   content: {
+    minHeight: 200,
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
+    alignItems: "flex-start",
   },
 });
 
@@ -86,11 +96,16 @@ const data = [
 ];
 
 function Home() {
+  const [searchFilter, setSearchFilter] = useState("");
   const [canGoBack, setCanGoBack] = useState(false);
   const [canGoForward, setCanGoForward] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedItem, setSelectedItem] = useState({});
   const insets = useSafeArea();
+
+  const [datami, setDatami] = useState({});
+
+  const onSdStateChange = (event) => setDatami(event);
 
   const {
     spacing,
@@ -100,29 +115,49 @@ function Home() {
   } = useTheme();
 
   const webView = useRef();
+  const bottomSheet = useRef();
 
-  const renderContent = () => (
-    <View
-      style={[
-        styles.content,
-        {
-          padding: spacing(2),
-          backgroundColor: white,
-        },
-      ]}
-    >
-      {data.map((item) => (
-        <Item
-          onPress={() => {
-            setSelectedItem(item);
-            toggleModalVisible();
-          }}
-          key={item.id}
-          {...item}
-        />
-      ))}
-    </View>
-  );
+  const renderContent = () => {
+    const filterRegex = new RegExp(
+      String(removeAccents(searchFilter).toLowerCase()),
+      "i"
+    );
+
+    const filter = (item) =>
+      filterRegex.test(removeAccents(item.title).toLowerCase());
+
+    const filteredData = data.filter(filter);
+
+    return (
+      <View
+        style={[
+          styles.content,
+          {
+            padding: spacing(2),
+            backgroundColor: white,
+          },
+        ]}
+      >
+        {filteredData.map((item) => (
+          <Item onPress={() => handlePressItem(item)} key={item.id} {...item} />
+        ))}
+      </View>
+    );
+  };
+
+  const handlePressItem = (item) => {
+    NativeModules.SmiSdkReactModule.getSDAuth(
+      "ak-6807dfa3-a5e6-4eb4-8732-e818b9b352c1",
+      item.url,
+      "",
+      (result) => {
+        if (result && result.url) {
+          setSelectedItem({ ...item, url: `${result.url}?query=1` });
+          toggleModalVisible();
+        }
+      }
+    );
+  };
 
   const renderHeader = () => (
     <Container style={styles.header}>
@@ -139,7 +174,13 @@ function Home() {
           </Typography>
         </Typography>
       </View>
-      <TextInput icon="search" />
+      <TextInput
+        icon="search"
+        onBlur={() => bottomSheet.current.snapTo(1)}
+        onChangeText={(value) => setSearchFilter(value)}
+        onFocus={() => bottomSheet.current.snapTo(0)}
+        value={searchFilter}
+      />
     </Container>
   );
 
@@ -178,6 +219,7 @@ function Home() {
     <>
       <Header />
       <BottomSheet
+        ref={bottomSheet}
         initialSnap={1}
         snapPoints={[firstPoint, middlePoint]}
         renderHeader={renderHeader}

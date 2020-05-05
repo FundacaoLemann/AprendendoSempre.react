@@ -1,38 +1,38 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import * as React from 'react';
-import Icon from '../components/Icon';
-import Typography from '../components/Typography';
-import {useTheme} from '../theme';
-import useBottomTabHeight from './hooks/useBottomTabHeight';
-import AboutStack from './stacks/AboutStack';
-import ClassRoom from './stacks/ClassRoomStack';
-import HomeStack from './stacks/HomeStack';
-import LiveStack from './stacks/LiveStack';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import * as React from "react";
+import Icon from "../components/Icon";
+import Typography from "../components/Typography";
+import { useTheme } from "../theme";
+import useBottomTabHeight from "./hooks/useBottomTabHeight";
+import AboutStack from "./stacks/AboutStack";
+import ClassRoom from "./stacks/ClassRoomStack";
+import HomeStack from "./stacks/HomeStack";
+import LiveStack from "./stacks/LiveStack";
 
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
   const config = {
     Home: {
-      icon: 'home',
-      title: 'Início',
+      icon: "home",
+      title: "Início",
     },
     Live: {
-      icon: 'live',
-      title: 'Live',
+      icon: "live",
+      title: "Live",
     },
     Classroom: {
-      icon: 'classroom',
-      title: 'Classroom',
+      icon: "classroom",
+      title: "Classroom",
     },
     About: {
-      icon: 'list',
-      title: 'Sobre',
+      icon: "list",
+      title: "Sobre",
     },
   };
 
   const {
-    palette: {primary, secondary},
+    palette: { primary, secondary },
   } = useTheme();
 
   const activeTintColor = secondary;
@@ -41,11 +41,11 @@ export default function BottomTabNavigator() {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        style: {height: useBottomTabHeight()},
+        style: { height: useBottomTabHeight() },
         allowFontScaling: false,
       }}
-      screenOptions={({route}) => ({
-        tabBarIcon: ({focused}) => {
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused }) => {
           return (
             <Icon
               color={focused ? activeTintColor : inactiveTintColor}
@@ -53,41 +53,43 @@ export default function BottomTabNavigator() {
             />
           );
         },
-        tabBarLabel: ({focused}) =>
+        tabBarLabel: ({ focused }) =>
           focused ? (
             <Typography
-              color={focused ? 'secondary' : 'primary'}
-              variant="caption">
+              color={focused ? "secondary" : "primary"}
+              variant="caption"
+            >
               {config[route.name].title}
             </Typography>
           ) : null,
-      })}>
+      })}
+    >
       <Tab.Screen
         name="Home"
         component={HomeStack}
         options={{
-          title: 'Início',
+          title: "Início",
         }}
       />
       <Tab.Screen
         name="Live"
         component={LiveStack}
         options={{
-          title: 'Live',
+          title: "Live",
         }}
       />
       <Tab.Screen
         name="Classroom"
         component={ClassRoom}
         options={{
-          title: 'Classroom',
+          title: "Classroom",
         }}
       />
       <Tab.Screen
         name="About"
         component={AboutStack}
         options={{
-          title: 'Sobre',
+          title: "Sobre",
         }}
       />
     </Tab.Navigator>

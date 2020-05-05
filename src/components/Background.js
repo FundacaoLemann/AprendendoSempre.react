@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import {Dimensions, Image, StyleSheet, View} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import {useTheme} from '../theme';
+import PropTypes from "prop-types";
+import React from "react";
+import { Dimensions, Image, StyleSheet, View } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
+import { useTheme } from "../theme";
 
 const styles = StyleSheet.create({
   root: {
-    position: 'relative',
+    position: "relative",
   },
   absolute: {
-    position: 'absolute',
+    position: "absolute",
   },
   image: {
     zIndex: 2,
@@ -22,24 +22,24 @@ const styles = StyleSheet.create({
   },
 });
 
-function Background({children, width, height}) {
+function Background({ children, width, height }) {
   const {
-    palette: {primary, secondary},
+    palette: { primary, secondary },
   } = useTheme();
 
   return (
     <View style={styles.root}>
       <Image
         resizeMode="cover"
-        source={require('../assets/bg-lines.png')}
-        style={[{height, width}, styles.image, styles.absolute]}
+        source={require("../assets/bg-lines.png")}
+        style={[{ height, width }, styles.image, styles.absolute]}
       />
       <LinearGradient
         colors={[primary, secondary]}
-        end={{x: 0, y: 1}}
+        end={{ x: 0, y: 1 }}
         locations={[0, 0.5]}
-        start={{x: 0, y: 0}}
-        style={[{height}, styles.gradient]}
+        start={{ x: 0, y: 0 }}
+        style={[{ height }, styles.gradient]}
       />
       <View
         style={[
@@ -49,7 +49,8 @@ function Background({children, width, height}) {
             height,
             width,
           },
-        ]}>
+        ]}
+      >
         {children}
       </View>
     </View>
@@ -58,7 +59,7 @@ function Background({children, width, height}) {
 
 Background.defaultProps = {
   height: 260,
-  width: Dimensions.get('window').width,
+  width: Dimensions.get("window").width,
 };
 
 Background.propTypes = {

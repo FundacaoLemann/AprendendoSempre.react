@@ -1,8 +1,8 @@
-import React from 'react';
-import {Text} from 'react-native';
+import React from "react";
+import { Text } from "react-native";
 
 function Live() {
-  return <Text>Live</Text>;
+  return null;
 }
 
 export default Live;

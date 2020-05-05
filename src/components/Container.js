@@ -1,16 +1,16 @@
-import React from 'react';
-import Box from './Box';
-import {useTheme} from '../theme';
+import React from "react";
+import Box from "./Box";
+import { useTheme } from "../theme";
 
-function Container({children, style, ...rest}) {
+function Container({ children, style, ...rest }) {
   const {
     palette: {
-      common: {white},
+      common: { white },
     },
   } = useTheme();
 
   return (
-    <Box px={2} py={2} style={[{backgroundColor: white}, style]} {...rest}>
+    <Box px={2} py={2} style={[{ backgroundColor: white }, style]} {...rest}>
       {children}
     </Box>
   );

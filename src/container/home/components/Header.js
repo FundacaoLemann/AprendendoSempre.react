@@ -1,19 +1,19 @@
-import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import {useSafeArea} from 'react-native-safe-area-context';
-import Background from '../../../components/Background';
-import Box from '../../../components/Box';
-import Button from '../../../components/Button';
-import Logo from '../../../components/Logo';
-import Typography from '../../../components/Typography';
-import useHeaderHeight from '../hooks/useHeaderHeight';
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import { useSafeArea } from "react-native-safe-area-context";
+import Background from "../../../components/Background";
+import Box from "../../../components/Box";
+import Button from "../../../components/Button";
+import Logo from "../../../components/Logo";
+import Typography from "../../../components/Typography";
+import useHeaderHeight from "../hooks/useHeaderHeight";
 
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
   },
   alignCenter: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   button: {
     minWidth: 200,
@@ -34,7 +34,8 @@ function Home() {
           {
             paddingTop: insets.top,
           },
-        ]}>
+        ]}
+      >
         <Box mt={2} mb={3}>
           <Logo />
         </Box>

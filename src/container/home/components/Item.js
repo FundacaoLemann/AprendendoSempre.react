@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 import {
   Dimensions,
   Image,
   StyleSheet,
   TouchableOpacity,
   View,
-} from 'react-native';
-import Box from '../../../components/Box';
-import Typography from '../../../components/Typography';
-import {useTheme} from '../../../theme';
+} from "react-native";
+import Box from "../../../components/Box";
+import Typography from "../../../components/Typography";
+import { useTheme } from "../../../theme";
 
-const {width: viewportWidth} = Dimensions.get('window');
+const { width: viewportWidth } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   root: {
@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
     height: 175,
   },
   center: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   avatar: {
     borderRadius: 35,
@@ -34,16 +34,16 @@ const styles = StyleSheet.create({
   image: {
     borderRadius: 25,
     height: 50,
-    overflow: 'hidden',
+    overflow: "hidden",
     width: 50,
   },
 });
 
-function Item({title, image, onPress}) {
+function Item({ title, image, onPress }) {
   const {
     palette: {
       primary,
-      common: {white},
+      common: { white },
       secondaryLight,
     },
     spacing,
@@ -59,7 +59,13 @@ function Item({title, image, onPress}) {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <View
-        style={[styles.root, styles.center, itemStyles, {width: rowWidth / 2}]}>
+        style={[
+          styles.root,
+          styles.center,
+          itemStyles,
+          { width: rowWidth / 2 },
+        ]}
+      >
         <View
           style={[
             styles.avatar,
@@ -67,7 +73,8 @@ function Item({title, image, onPress}) {
             {
               backgroundColor: primary,
             },
-          ]}>
+          ]}
+        >
           <View
             style={[
               styles.avatarInner,
@@ -75,7 +82,8 @@ function Item({title, image, onPress}) {
               {
                 backgroundColor: white,
               },
-            ]}>
+            ]}
+          >
             <Image style={styles.image} width={50} height={50} source={image} />
           </View>
         </View>

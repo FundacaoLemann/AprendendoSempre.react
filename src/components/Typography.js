@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import {Text} from 'react-native';
-import {useTheme} from '../theme';
+import PropTypes from "prop-types";
+import React from "react";
+import { Text } from "react-native";
+import { useTheme } from "../theme";
 
 function Typography({
   variant,
@@ -15,9 +15,9 @@ function Typography({
 }) {
   const {
     typography,
-    typography: {fonts},
+    typography: { fonts },
     palette: {
-      common: {black, white},
+      common: { black, white },
       primary,
       secondary,
     },
@@ -26,7 +26,7 @@ function Typography({
   const typographyTheme =
     typography[variant] || typography[Typography.default.variant];
 
-  const {fontFamily} = fonts[fontWeight] || typographyTheme;
+  const { fontFamily } = fonts[fontWeight] || typographyTheme;
 
   const mapColors = {
     white,
@@ -44,25 +44,25 @@ function Typography({
 
   return (
     <Text style={[style, styles]} {...rest}>
-      {React.Children.map(children, child =>
-        typeof child === 'string' && uppercase ? child.toUpperCase() : child,
+      {React.Children.map(children, (child) =>
+        typeof child === "string" && uppercase ? child.toUpperCase() : child
       )}
     </Text>
   );
 }
 
 Typography.defaultProps = {
-  variant: 'body2',
+  variant: "body2",
   fontWeight: null,
-  color: 'primary',
-  align: 'auto',
+  color: "primary",
+  align: "auto",
 };
 
 Typography.propTypes = {
-  variant: PropTypes.oneOf(['h6', 'h5', 'h4', 'body1', 'body2', 'caption']),
-  fontWeight: PropTypes.oneOf(['bold', 'regular']),
-  color: PropTypes.oneOf(['white', 'black', 'primary', 'secondary']),
-  align: PropTypes.oneOf(['auto', 'left', 'right', 'center', 'justify']),
+  variant: PropTypes.oneOf(["h6", "h5", "h4", "body1", "body2", "caption"]),
+  fontWeight: PropTypes.oneOf(["bold", "regular"]),
+  color: PropTypes.oneOf(["white", "black", "primary", "secondary"]),
+  align: PropTypes.oneOf(["auto", "left", "right", "center", "justify"]),
 };
 
 export default Typography;
