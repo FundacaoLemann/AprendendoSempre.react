@@ -67,6 +67,7 @@
 		A9E3E7621FAF42E18C555197 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B716570AC6A4F60AF1C3891 /* Octicons.ttf */; };
 		3D8F406844764A04A22FF799 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5087D59B86424E6F9571F4B1 /* SimpleLineIcons.ttf */; };
 		E96D3823D8D8406F9DFF37B6 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94A3E398B0AF426F8CE552E3 /* Zocial.ttf */; };
+		6FAAE67F3737453BB605EDE3 /* libRNCSafeAreaContext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1046C20157E4E9191F1D8CC /* libRNCSafeAreaContext.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -406,6 +407,8 @@
 		9B716570AC6A4F60AF1C3891 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		5087D59B86424E6F9571F4B1 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		94A3E398B0AF426F8CE552E3 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FB18F59E80E34005BEC0F5CB /* SafeAreaView.xcodeproj */ = {isa = PBXFileReference; name = "SafeAreaView.xcodeproj"; path = "../node_modules/react-native-safe-area-context/ios/SafeAreaView.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		F1046C20157E4E9191F1D8CC /* libRNCSafeAreaContext.a */ = {isa = PBXFileReference; name = "libRNCSafeAreaContext.a"; path = "libRNCSafeAreaContext.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -439,6 +442,7 @@
 				3E8A0E61D78C47998756C689 /* libRNDatamiSdk.a in Frameworks */,
 				DC1C089E4D43422DA1E87BEA /* libBVLinearGradient.a in Frameworks */,
 				3F83D768CF9A4FF09C903B3D /* libRNVectorIcons.a in Frameworks */,
+				6FAAE67F3737453BB605EDE3 /* libRNCSafeAreaContext.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +640,7 @@
 				F14488743BA6405C92F6D828 /* RNDatamiSdk.xcodeproj */,
 				81869AB6CE674175A80024CC /* BVLinearGradient.xcodeproj */,
 				06BCF38639964BC3A279BFEF /* RNVectorIcons.xcodeproj */,
+				FB18F59E80E34005BEC0F5CB /* SafeAreaView.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1318,6 +1323,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1326,6 +1332,7 @@
 					"$(SRCROOT)/../node_modules/react-native-smisdk-plugin/smisdk-ios-plugin",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-safe-area-context/ios/SafeAreaView",
 				);
 			};
 			name = Debug;
@@ -1355,6 +1362,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1363,6 +1371,7 @@
 					"$(SRCROOT)/../node_modules/react-native-smisdk-plugin/smisdk-ios-plugin",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-safe-area-context/ios/SafeAreaView",
 				);
 			};
 			name = Release;
@@ -1390,6 +1399,7 @@
 					"$(SRCROOT)/../node_modules/react-native-smisdk-plugin/smisdk-ios-plugin",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-safe-area-context/ios/SafeAreaView",
 				);
 			};
 			name = Debug;
@@ -1416,6 +1426,7 @@
 					"$(SRCROOT)/../node_modules/react-native-smisdk-plugin/smisdk-ios-plugin",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-safe-area-context/ios/SafeAreaView",
 				);
 			};
 			name = Release;
@@ -1453,6 +1464,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1461,6 +1473,7 @@
 					"$(SRCROOT)/../node_modules/react-native-smisdk-plugin/smisdk-ios-plugin",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-safe-area-context/ios/SafeAreaView",
 				);
 			};
 			name = Debug;
@@ -1498,6 +1511,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1506,6 +1520,7 @@
 					"$(SRCROOT)/../node_modules/react-native-smisdk-plugin/smisdk-ios-plugin",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-safe-area-context/ios/SafeAreaView",
 				);
 			};
 			name = Release;
@@ -1542,6 +1557,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1550,6 +1566,7 @@
 					"$(SRCROOT)/../node_modules/react-native-smisdk-plugin/smisdk-ios-plugin",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-safe-area-context/ios/SafeAreaView",
 				);
 			};
 			name = Debug;
@@ -1586,6 +1603,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1594,6 +1612,7 @@
 					"$(SRCROOT)/../node_modules/react-native-smisdk-plugin/smisdk-ios-plugin",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-safe-area-context/ios/SafeAreaView",
 				);
 			};
 			name = Release;

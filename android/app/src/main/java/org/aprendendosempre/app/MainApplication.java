@@ -8,6 +8,7 @@ import com.datami.smisdk_plugin.SmiSdkReactPackage;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
@@ -32,6 +33,7 @@ public class MainApplication extends Application implements SdStateChangeListene
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new SafeAreaContextPackage(),
             new VectorIconsPackage(),
             new LinearGradientPackage(),
             new ReanimatedPackage(),
