@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   ActivityIndicator,
   Dimensions,
@@ -45,8 +45,65 @@ const styles = StyleSheet.create({
   },
 });
 
+const data = [
+  {
+    id: 1,
+    title: 'Aprendendo Sempre',
+    image: 'http://aprendendosempre.luby.com.br/imgs/aprendendo_sempre.png',
+    url: 'https://aprendendosempre.org/',
+  },
+  {
+    id: 2,
+    title: 'Aprendizap',
+    image: 'http://aprendendosempre.luby.com.br/imgs/aprendizap-logo.png',
+    url: 'https://www.aprendizap.com.br/',
+  },
+  {
+    id: 3,
+    title: 'Árvore Educação',
+    image: 'http://aprendendosempre.luby.com.br/imgs/arvore_de_livros.png',
+    url: 'https://app.arvoreeducacao.com.br/login?platform=arvore',
+  },
+  {
+    id: 4,
+    title: 'AvaMec',
+    image: 'http://aprendendosempre.luby.com.br/imgs/avamec.png',
+    url: 'http://avamec.mec.gov.br/#/',
+  },
+  {
+    id: 5,
+    title: 'Escola Digital',
+    image: 'http://aprendendosempre.luby.com.br/imgs/escola_digital.png',
+    url: 'https://escoladigital.org.br/',
+  },
+  {
+    id: 6,
+    title: 'Google Sala de Aula',
+    image: 'http://aprendendosempre.luby.com.br/imgs/google_sala_de_aula.png',
+    url: 'https://edu.google.com/intl/pt/products/classroom/?modal_active=none',
+  },
+  {
+    id: 7,
+    title: 'Khan Academy',
+    image: 'http://aprendendosempre.luby.com.br/imgs/khan_academy.png',
+    url: 'https://pt.khanacademy.org/',
+  },
+  {
+    id: 8,
+    title: 'Kinedu',
+    image: 'http://aprendendosempre.luby.com.br/imgs/kinedu.png',
+    url: 'https://www.kinedu.com/pt',
+  },
+  {
+    id: 9,
+    title: 'Nova Escola',
+    image: 'http://aprendendosempre.luby.com.br/imgs/nova_escola.png',
+    url: 'https://novaescola.org.br/',
+  },
+];
+
 function Home() {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [searchFilter, setSearchFilter] = useState('');
   const [canGoBack, setCanGoBack] = useState(false);
   const [canGoForward, setCanGoForward] = useState(false);
@@ -54,18 +111,18 @@ function Home() {
   const [selectedItem, setSelectedItem] = useState({});
   const insets = useSafeArea();
 
-  useEffect(() => {
-    function fetchData() {
-      fetch('http://aprendendosempre.luby.com.br/json/data.json')
-        .then((response) => response.json())
-        .then((responseData) => setData(responseData))
-        .catch(() => {
-          // no feedback
-        });
-    }
+  // useEffect(() => {
+  //   function fetchData() {
+  //     fetch('http://aprendendosempre.luby.com.br/json/data.json')
+  //       .then((response) => response.json())
+  //       .then((responseData) => setData(responseData))
+  //       .catch(() => {
+  //         // no feedback
+  //       });
+  //   }
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   const {
     spacing,
