@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Aprendendo Sempre</string>
+    <array name="smisdk_exclusion_domin"></array>
+    <bool name="smisdk_show_messaging">true</bool>
+    <string name="smisdk_apikey">ak-6807dfa3-a5e6-4eb4-8732-e818b9b352c1</string>
+</resources>
