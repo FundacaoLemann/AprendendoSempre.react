@@ -19,6 +19,7 @@ const { ThemeProvider, useTheme, withTheme } = createTheming({
     secondary,
     primaryLight: color(primary).alpha(0.15).rgb().toString(),
     secondaryLight: color(secondary).alpha(0.15).rgb().toString(),
+    divider: '#EDEDED',
   },
   spacing,
   shape: {

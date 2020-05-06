@@ -156,9 +156,6 @@ function Home() {
     </Container>
   );
 
-  const firstPoint = height - (insets.top + useBottomTabHeight());
-  const middlePoint = height - (useHeaderHeight() - spacing(2) + useBottomTabHeight());
-
   const handleNavigationStateChange = (event) => {
     setCanGoBack(event.canGoBack);
     setCanGoForward(event.canGoForward);
@@ -181,6 +178,9 @@ function Home() {
       webView.current.reload();
     }
   };
+
+  const firstPoint = height - (insets.top + useBottomTabHeight());
+  const middlePoint = height - (useHeaderHeight() - spacing(2) + useBottomTabHeight());
 
   return (
     <>

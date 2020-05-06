@@ -3,7 +3,17 @@ import React from 'react';
 import { Text } from 'react-native';
 import { useTheme } from '../theme';
 
-function Typography({ variant, color, align, fontWeight, style, children, uppercase, ...rest }) {
+function Typography({
+  align,
+  children,
+  color,
+  fontWeight,
+  gutterBottom,
+  style,
+  uppercase,
+  variant,
+  ...rest
+}) {
   const {
     typography,
     typography: { fonts },
@@ -12,6 +22,7 @@ function Typography({ variant, color, align, fontWeight, style, children, upperc
       primary,
       secondary,
     },
+    spacing,
   } = useTheme();
 
   const typographyTheme = typography[variant] || typography[Typography.default.variant];
@@ -29,6 +40,7 @@ function Typography({ variant, color, align, fontWeight, style, children, upperc
     ...typographyTheme,
     color: mapColors[color] || primary,
     fontFamily,
+    marginBottom: gutterBottom ? spacing(2) : 0,
     textAlign: align,
   };
 
@@ -46,6 +58,7 @@ Typography.defaultProps = {
   children: null,
   color: 'primary',
   fontWeight: null,
+  gutterBottom: false,
   style: null,
   uppercase: false,
   variant: 'body2',
@@ -56,6 +69,7 @@ Typography.propTypes = {
   children: PropTypes.node,
   color: PropTypes.oneOf(['white', 'black', 'primary', 'secondary']),
   fontWeight: PropTypes.oneOf(['bold', 'regular']),
+  gutterBottom: PropTypes.bool,
   style: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   uppercase: PropTypes.bool,
   variant: PropTypes.oneOf(['h6', 'h5', 'h4', 'body1', 'body2', 'caption']),

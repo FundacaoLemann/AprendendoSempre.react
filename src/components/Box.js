@@ -7,7 +7,7 @@ function Box({ style, children, ...rest }) {
   const spacingStyles = useSpacing(rest);
 
   return (
-    <View style={[style, ...spacingStyles]} {...rest}>
+    <View style={[...spacingStyles, style]} {...rest}>
       {children}
     </View>
   );

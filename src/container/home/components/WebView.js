@@ -109,21 +109,21 @@ const WebView = React.forwardRef(
 );
 
 WebView.defaultProps = {
+  canGoBack: false,
+  canGoForward: false,
   goBack: null,
-  reload: null,
   goForward: null,
   onClose: null,
-  canGoBack: null,
-  canGoForward: null,
+  reload: null,
 };
 
 WebView.propTypes = {
+  canGoBack: PropTypes.bool,
+  canGoForward: PropTypes.bool,
   goBack: PropTypes.func,
-  reload: PropTypes.func,
   goForward: PropTypes.func,
   onClose: PropTypes.func,
-  canGoBack: PropTypes.func,
-  canGoForward: PropTypes.func,
+  reload: PropTypes.func,
 };
 
 export default WebView;
