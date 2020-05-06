@@ -1,7 +1,0 @@
-rootProject.name = 'AprendendoSempre56'
-
-include ':app'
-
-include ':smisdk-android-plugin'
-project(':smisdk-android-plugin').projectDir = new File(settingsDir,
-'../node_modules/react-native-smisdk-plugin/smisdk-android-plugin')
