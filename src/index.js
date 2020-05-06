@@ -1,9 +1,8 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { DefaultTheme } from "@react-navigation/native";
-import Root from "./navigation";
-import { ThemeProvider } from "./theme";
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
+import React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Root from './navigation';
+import { ThemeProvider } from './theme';
 
 function App() {
   return (
@@ -14,7 +13,7 @@ function App() {
             ...DefaultTheme,
             colors: {
               ...DefaultTheme.colors,
-              background: "#fff",
+              background: '#fff',
             },
           }}
         >

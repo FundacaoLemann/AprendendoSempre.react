@@ -1,36 +1,32 @@
-import { useHeaderHeight } from "@react-navigation/stack";
-import React from "react";
-import { Dimensions, StyleSheet, TouchableOpacity, View } from "react-native";
-import Icon from "react-native-vector-icons/MaterialIcons";
-import { WebView as WebViewNative } from "react-native-webview";
-import { useTheme } from "../../../theme";
+import { useHeaderHeight } from '@react-navigation/stack';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Dimensions, StyleSheet, TouchableOpacity, View } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { WebView as WebViewNative } from 'react-native-webview';
+import { useTheme } from '../../../theme';
 
-const { width: viewportWidth, height: viewportHeight } = Dimensions.get(
-  "window"
-);
+const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   wrapper: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   row: {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
   },
   button: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 40,
   },
 });
 
 const WebView = React.forwardRef(
-  (
-    { goBack, reload, goForward, onClose, canGoBack, canGoForward, ...rest },
-    ref
-  ) => {
+  ({ goBack, reload, goForward, onClose, canGoBack, canGoForward, ...rest }, ref) => {
     const headerHeight = useHeaderHeight();
     const {
       palette: {
@@ -109,7 +105,25 @@ const WebView = React.forwardRef(
         </View>
       </View>
     );
-  }
+  },
 );
+
+WebView.defaultProps = {
+  goBack: null,
+  reload: null,
+  goForward: null,
+  onClose: null,
+  canGoBack: null,
+  canGoForward: null,
+};
+
+WebView.propTypes = {
+  goBack: PropTypes.func,
+  reload: PropTypes.func,
+  goForward: PropTypes.func,
+  onClose: PropTypes.func,
+  canGoBack: PropTypes.func,
+  canGoForward: PropTypes.func,
+};
 
 export default WebView;

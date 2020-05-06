@@ -1,24 +1,24 @@
-import PropTypes from "prop-types";
-import React from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
-import { useTheme } from "../theme";
-import Typography from "./Typography";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { useTheme } from '../theme';
+import Typography from './Typography';
 
 const styles = StyleSheet.create({
   root: {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
   },
   button: {
-    alignItems: "center",
+    alignItems: 'center',
     borderWidth: 2,
-    display: "flex",
+    display: 'flex',
     height: 40,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
 });
 
-function Button({ onPress, style }) {
+function Button({ onPress, style, children }) {
   const {
     palette: {
       common: { white },
@@ -38,7 +38,7 @@ function Button({ onPress, style }) {
       <View style={styles.root}>
         <View style={[buttonStyles, styles.button, style]}>
           <Typography variant="body2" fontWeight="bold" color="white" uppercase>
-            Saiba Mais
+            {children}
           </Typography>
         </View>
       </View>
@@ -52,6 +52,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
+  children: PropTypes.node.isRequired,
   onPress: PropTypes.func,
   style: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 };

@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import React from "react";
-import { View } from "react-native";
-import { useSpacing } from "../utils";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { View } from 'react-native';
+import { useSpacing } from '../utils';
 
 function Box({ style, children, ...rest }) {
   const spacingStyles = useSpacing(rest);

@@ -1,16 +1,11 @@
-import React from "react";
-import {
-  Dimensions,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import Box from "../../../components/Box";
-import Typography from "../../../components/Typography";
-import { useTheme } from "../../../theme";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import Box from '../../../components/Box';
+import Typography from '../../../components/Typography';
+import { useTheme } from '../../../theme';
 
-const { width: viewportWidth } = Dimensions.get("window");
+const { width: viewportWidth } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   root: {
@@ -18,8 +13,8 @@ const styles = StyleSheet.create({
     height: 175,
   },
   center: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   avatar: {
     borderRadius: 35,
@@ -34,7 +29,7 @@ const styles = StyleSheet.create({
   image: {
     borderRadius: 25,
     height: 50,
-    overflow: "hidden",
+    overflow: 'hidden',
     width: 50,
   },
 });
@@ -58,14 +53,7 @@ function Item({ title, image, onPress }) {
 
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
-      <View
-        style={[
-          styles.root,
-          styles.center,
-          itemStyles,
-          { width: rowWidth / 2 },
-        ]}
-      >
+      <View style={[styles.root, styles.center, itemStyles, { width: rowWidth / 2 }]}>
         <View
           style={[
             styles.avatar,
@@ -84,7 +72,7 @@ function Item({ title, image, onPress }) {
               },
             ]}
           >
-            <Image style={styles.image} width={50} height={50} source={image} />
+            <Image style={styles.image} width={50} height={50} source={{ uri: image }} />
           </View>
         </View>
         <Box mt={3} mx={2}>
@@ -96,5 +84,17 @@ function Item({ title, image, onPress }) {
     </TouchableOpacity>
   );
 }
+
+Item.defaultProps = {
+  image: '',
+  onPress: null,
+  title: '',
+};
+
+Item.propTypes = {
+  image: PropTypes.string,
+  onPress: PropTypes.func,
+  title: PropTypes.string,
+};
 
 export default Item;

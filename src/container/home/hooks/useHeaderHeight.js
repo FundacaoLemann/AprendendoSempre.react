@@ -1,4 +1,4 @@
-import { useSafeArea } from "react-native-safe-area-context";
+import { useSafeArea } from 'react-native-safe-area-context';
 
 function useHeaderHeight() {
   const insets = useSafeArea();

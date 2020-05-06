@@ -1,15 +1,15 @@
-import PropTypes from "prop-types";
-import React from "react";
-import { Dimensions, Image, StyleSheet, View } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
-import { useTheme } from "../theme";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Dimensions, Image, StyleSheet, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import { useTheme } from '../theme';
 
 const styles = StyleSheet.create({
   root: {
-    position: "relative",
+    position: 'relative',
   },
   absolute: {
-    position: "absolute",
+    position: 'absolute',
   },
   image: {
     zIndex: 2,
@@ -31,7 +31,7 @@ function Background({ children, width, height }) {
     <View style={styles.root}>
       <Image
         resizeMode="cover"
-        source={require("../assets/bg-lines.png")}
+        source={require('../assets/bg-lines.png')}
         style={[{ height, width }, styles.image, styles.absolute]}
       />
       <LinearGradient
@@ -59,7 +59,7 @@ function Background({ children, width, height }) {
 
 Background.defaultProps = {
   height: 260,
-  width: Dimensions.get("window").width,
+  width: Dimensions.get('window').width,
 };
 
 Background.propTypes = {

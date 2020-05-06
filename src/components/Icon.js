@@ -1,20 +1,13 @@
-import PropTypes from "prop-types";
-import React from "react";
-import { createIconSetFromIcoMoon } from "react-native-vector-icons";
-import { useTheme } from "../theme";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
+import { useTheme } from '../theme';
 
-const selection = require("../assets/fonts/icons/selection.json");
+const selection = require('../assets/fonts/icons/selection.json');
 
-const IcomoonIcon = createIconSetFromIcoMoon(selection, "icomoon");
+const IcomoonIcon = createIconSetFromIcoMoon(selection, 'icomoon');
 
-export const iconNames = [
-  "classroom",
-  "home",
-  "search",
-  "list",
-  "live",
-  "notification",
-];
+export const iconNames = ['classroom', 'home', 'search', 'list', 'live', 'notification'];
 
 function Icon({ name, color, style, ...rest }) {
   const theme = useTheme();
@@ -37,13 +30,11 @@ function Icon({ name, color, style, ...rest }) {
     color: mapColor[color] || color,
   };
 
-  return (
-    <IcomoonIcon style={[iconStyles, style]} name={name} size={24} {...rest} />
-  );
+  return <IcomoonIcon style={[iconStyles, style]} name={name} size={24} {...rest} />;
 }
 
 Icon.defaultProps = {
-  color: "primary",
+  color: 'primary',
   size: 24,
   style: null,
 };

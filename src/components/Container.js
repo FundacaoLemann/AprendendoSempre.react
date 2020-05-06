@@ -1,6 +1,7 @@
-import React from "react";
-import Box from "./Box";
-import { useTheme } from "../theme";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Box from './Box';
+import { useTheme } from '../theme';
 
 function Container({ children, style, ...rest }) {
   const {
@@ -15,5 +16,14 @@ function Container({ children, style, ...rest }) {
     </Box>
   );
 }
+
+Container.defaultProps = {
+  style: null,
+};
+
+Container.propTypes = {
+  children: PropTypes.node.isRequired,
+  style: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+};
 
 export default Container;

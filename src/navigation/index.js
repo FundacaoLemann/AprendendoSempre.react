@@ -1,33 +1,31 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import * as React from "react";
-import Icon from "../components/Icon";
-import Typography from "../components/Typography";
-import { useTheme } from "../theme";
-import useBottomTabHeight from "./hooks/useBottomTabHeight";
-import AboutStack from "./stacks/AboutStack";
-import ClassRoom from "./stacks/ClassRoomStack";
-import HomeStack from "./stacks/HomeStack";
-import LiveStack from "./stacks/LiveStack";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import * as React from 'react';
+import Icon from '../components/Icon';
+import Typography from '../components/Typography';
+import { useTheme } from '../theme';
+import useBottomTabHeight from './hooks/useBottomTabHeight';
+import AboutStack from './stacks/AboutStack';
+import HomeStack from './stacks/HomeStack';
 
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
   const config = {
     Home: {
-      icon: "home",
-      title: "Início",
+      icon: 'home',
+      title: 'Início',
     },
     Live: {
-      icon: "live",
-      title: "Live",
+      icon: 'live',
+      title: 'Live',
     },
     Classroom: {
-      icon: "classroom",
-      title: "Classroom",
+      icon: 'classroom',
+      title: 'Classroom',
     },
     About: {
-      icon: "list",
-      title: "Sobre",
+      icon: 'list',
+      title: 'Sobre',
     },
   };
 
@@ -45,6 +43,7 @@ export default function BottomTabNavigator() {
         allowFontScaling: false,
       }}
       screenOptions={({ route }) => ({
+        // eslint-disable-next-line
         tabBarIcon: ({ focused }) => {
           return (
             <Icon
@@ -53,12 +52,10 @@ export default function BottomTabNavigator() {
             />
           );
         },
+        // eslint-disable-next-line
         tabBarLabel: ({ focused }) =>
           focused ? (
-            <Typography
-              color={focused ? "secondary" : "primary"}
-              variant="caption"
-            >
+            <Typography color={focused ? 'secondary' : 'primary'} variant="caption">
               {config[route.name].title}
             </Typography>
           ) : null,
@@ -68,14 +65,14 @@ export default function BottomTabNavigator() {
         name="Home"
         component={HomeStack}
         options={{
-          title: "Início",
+          title: 'Início',
         }}
       />
       <Tab.Screen
         name="About"
         component={AboutStack}
         options={{
-          title: "Sobre",
+          title: 'Sobre',
         }}
       />
     </Tab.Navigator>
