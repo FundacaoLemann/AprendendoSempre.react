@@ -8,44 +8,43 @@ import { useTheme } from '../../theme';
 const { width: viewportWidth } = Dimensions.get('window');
 
 const data = [
-  { id: 1, image: 'https://aprendendosempre.org/wp-content/uploads/2020/05/bid.jpg' },
-  { id: 2, image: 'https://aprendendosempre.org/wp-content/uploads/2020/05/colabora-educacao.png' },
-  { id: 3, image: 'https://aprendendosempre.org/wp-content/uploads/2020/04/consed.jpg' },
-  { id: 4, image: 'https://aprendendosempre.org/wp-content/uploads/2020/04/ensina-brasil.png' },
+  { id: 1, image: require('../../assets/images/bid.jpg') },
+  { id: 2, image: require('../../assets/images/colabora-educacao.png') },
+  { id: 3, image: require('../../assets/images/consed.jpg') },
+  { id: 4, image: require('../../assets/images/ensina-brasil.png') },
   {
     id: 5,
-    image:
-      'https://aprendendosempre.org/wp-content/uploads/2020/04/fundacao-grupo-boticario-logo.jpg',
+    image: require('../../assets/images/fundacao-grupo-boticario-logo.jpg'),
   },
   {
     id: 6,
-    image: 'https://aprendendosempre.org/wp-content/uploads/2020/04/fundacao-roberto-marinho.jpg',
+    image: require('../../assets/images/fundacao-roberto-marinho.jpg'),
   },
-  { id: 7, image: 'https://aprendendosempre.org/wp-content/uploads/2020/05/iede.jpg' },
+  { id: 7, image: require('../../assets/images/iede.jpg') },
   {
     id: 8,
-    image: 'https://aprendendosempre.org/wp-content/uploads/2020/04/instituto-ayrton-senna.png',
+    image: require('../../assets/images/instituto-ayrton-senna.png'),
   },
   {
     id: 9,
-    image: 'https://aprendendosempre.org/wp-content/uploads/2020/04/instituto-rodrigo-mendes.jpg',
+    image: require('../../assets/images/instituto-rodrigo-mendes.jpg'),
   },
-  { id: 10, image: 'https://aprendendosempre.org/wp-content/uploads/2020/04/iungo.jpg' },
-  { id: 11, image: 'https://aprendendosempre.org/wp-content/uploads/2020/05/ismart1.jpg' },
+  { id: 10, image: require('../../assets/images/iungo.jpg') },
+  { id: 11, image: require('../../assets/images/ismart1.jpg') },
   {
     id: 12,
-    image: 'https://aprendendosempre.org/wp-content/uploads/2020/04/instituto-votorantim.jpg',
+    image: require('../../assets/images/instituto-votorantim.jpg'),
   },
-  { id: 13, image: 'https://aprendendosempre.org/wp-content/uploads/2020/04/lab-edu.jpg' },
+  { id: 13, image: require('../../assets/images/lab-edu.jpg') },
   {
     id: 14,
-    image: 'https://aprendendosempre.org/wp-content/uploads/2020/04/movimento-pela-base.png',
+    image: require('../../assets/images/movimento-pela-base.png'),
   },
   {
     id: 15,
-    image: 'https://aprendendosempre.org/wp-content/uploads/2020/04/nova-escola-rodape.png',
+    image: require('../../assets/images/nova-escola-rodape.png'),
   },
-  { id: 16, image: 'https://aprendendosempre.org/wp-content/uploads/2020/04/undime-1.jpg' },
+  { id: 16, image: require('../../assets/images/undime-1.jpg') },
 ];
 
 const styles = StyleSheet.create({
@@ -131,7 +130,7 @@ function About() {
                 <Image
                   resizeMode="contain"
                   style={{ width: itemSize, height: itemSize }}
-                  source={{ uri: item.image }}
+                  source={item.image}
                 />
               </View>
             ))}

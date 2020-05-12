@@ -72,7 +72,7 @@ function Item({ title, image, onPress }) {
               },
             ]}
           >
-            <Image style={styles.image} width={50} height={50} source={{ uri: image }} />
+            <Image style={styles.image} width={50} height={50} source={image} />
           </View>
         </View>
         <Box mt={3} mx={2}>
@@ -92,7 +92,7 @@ Item.defaultProps = {
 };
 
 Item.propTypes = {
-  image: PropTypes.string,
+  image: PropTypes.node,
   onPress: PropTypes.func,
   title: PropTypes.string,
 };
