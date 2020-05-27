@@ -56,23 +56,6 @@ function Home() {
   const [selectedItem, setSelectedItem] = useState({});
   const insets = useSafeArea();
 
-  const getSponsoredUrl = (url = '') => {
-    return new Promise((resolve) => {
-      NativeModules.SmiSdkReactModule.getSDAuth(
-        'ak-6807dfa3-a5e6-4eb4-8732-e818b9b352c1',
-        url,
-        '',
-        (result) => {
-          if (result && result.url) {
-            resolve(result.url);
-          } else {
-            resolve(url);
-          }
-        },
-      );
-    });
-  };
-
   const onSdStateChange = (event) => {
     if (event.sd_state === 'SD_AVAILABLE') {
       Alert.alert('Parabéns!', 'Parabéns! Você está navegando sem consumir seu pacote de dados.');
@@ -104,8 +87,7 @@ function Home() {
   };
 
   const handlePressItem = async (item) => {
-    const url = await getSponsoredUrl(item.url);
-    setSelectedItem({ ...item, url });
+    setSelectedItem(item);
     toggleModalVisible();
   };
 

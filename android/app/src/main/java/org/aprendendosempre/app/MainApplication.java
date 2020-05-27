@@ -1,10 +1,12 @@
 package org.aprendendosempre.app;
 
-import com.datami.smi.SdStateChangeListener; 
-import com.datami.smi.SmiResult; 
-import com.datami.smi.SmiSdk; 
-import com.datami.smisdk_plugin.SmiSdkReactModule; 
-import com.datami.smisdk_plugin.SmiSdkReactPackage; 
+import com.datami.smi.SdStateChangeListener;
+import com.datami.smi.SmiResult;
+import com.datami.smi.SmiVpnSdk;
+import com.datami.smi.SmiSdk;
+import com.datami.smisdk_plugin.SmiSdkReactModule;
+import com.datami.smisdk_plugin.SmiSdkReactPackage;
+import com.datami.smi.internal.MessagingType;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
@@ -38,14 +40,15 @@ public class MainApplication extends Application implements SdStateChangeListene
       return Arrays.<ReactPackage>asList(
           new RNCWebViewPackage(),
           new MainReactPackage(),
-            new RNScreensPackage(),
-            new RNCMaskedViewPackage(),
-            new SvgPackage(),
-            new SafeAreaContextPackage(),
-            new VectorIconsPackage(),
-            new LinearGradientPackage(),
-            new ReanimatedPackage(),
-            new RNGestureHandlerPackage(), new SmiSdkReactPackage()
+          new RNScreensPackage(),
+          new RNCMaskedViewPackage(),
+          new SvgPackage(),
+          new SafeAreaContextPackage(),
+          new VectorIconsPackage(),
+          new LinearGradientPackage(),
+          new ReanimatedPackage(),
+          new RNGestureHandlerPackage(),
+          new SmiSdkReactPackage()
       );
     }
 
@@ -60,17 +63,15 @@ public class MainApplication extends Application implements SdStateChangeListene
     return mReactNativeHost;
   }
 
-  @Override
+    @Override
   public void onCreate() {
     super.onCreate();
-SmiSdk.initSponsoredData(getResources().getString(R.string.smisdk_apikey), 
-this, null, R.mipmap.ic_launcher,
-getResources().getBoolean(R.bool.smisdk_show_messaging),
-Arrays.asList(getResources().getStringArray(R.array.smisdk_exclusion_domin)));
+    SmiVpnSdk.initSponsoredData(getResources().getString(R.string.smisdk_apikey),  this, R.mipmap.ic_launcher, MessagingType.NONE, true);
     SoLoader.init(this, /* native exopackage */ false);
   }
-@Override 
- public void onChange(SmiResult smiResult) {
- SmiSdkReactModule.setSmiResultToModule(smiResult);
-}
+
+  @Override
+  public void onChange(SmiResult smiResult) {
+    SmiSdkReactModule.setSmiResultToModule(smiResult);
+  }
 }
