@@ -57,11 +57,9 @@ function Home() {
   const insets = useSafeArea();
 
   const onSdStateChange = (event) => {
-    window.setTimeout(() => {
-      if (event.sd_state === 'SD_AVAILABLE') {
-        Alert.alert('Parabéns!', 'Parabéns! Você está navegando sem consumir seu pacote de dados.');
-      }
-    }, 500);
+    if (event.sd_state === 'SD_AVAILABLE') {
+      Alert.alert('Parabéns!', 'Parabéns! Você está navegando sem consumir seu pacote de dados.');
+    }
   };
 
   useEffect(() => {
